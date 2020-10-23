@@ -28,6 +28,20 @@
     margin-right: 0px;
 }
 
+.colday-weekend{
+    font-family: Arial;
+    width: 120px;
+    height: 80px;
+    background-color: rgb(246, 246, 246);
+    border-color: rgb(134, 134, 146);
+    border-style: solid;
+    border-width: .05rem;
+    color: darkblue;
+    padding-left: 8px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
 .colday_head{
     width: 120px;
     height: 25px;

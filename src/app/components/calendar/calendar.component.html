@@ -8,62 +8,7 @@
   *ngIf="show; then modalPut">  
 </ng-container>
     <ng-template #modalPut let-modal>
-        <div class="modal-header">
-        <h4 class="modal-title" id="modal-basic-title"> alert add</h4>
-        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        </div>
-        <div class="modal-body">
-        
-    <div clss="col-6">
-        <form class=".form" #formNuevo="ngForm" (ngSubmit)="onSubmit()">    
-            <p>
-                <label class= "lab" >city:
-                    <span *ngIf="!city.valid && city.touched" class="label label-danger">Fill city</span>
-                </label>
-                
-                <input class="form-control" type="text" name="city" #city="ngModel" 
-                [(ngModel)]="alert.city" 
-                    required>
-            </p>
-            <span></span>
-        <p>
-            <label class= "lab">Day:
-                <span *ngIf="!day.valid && day.touched" class="label label-danger">Fill day</span>
-            </label>
-            <input class="form-control" type="text" name="day" #day="ngModel" 
-            [(ngModel)]="alert.day" 
-                required>
-        </p>
-        <p>
-            <label class= "lab">Time:
-                <span *ngIf="!time.valid && time.touched" class="label label-danger">Fill Time</span>
-            </label>
-            <input class="form-control" type="text" name="time" #time="ngModel" 
-            [(ngModel)]="alert.time" 
-                required>
-        </p>
-        <p>
-            <label class= "lab">Subject:
-                <span *ngIf="!subject.valid && subject.touched" class="label label-danger">Fill Subject</span>
-            </label>
-            <textarea ng-model="myTextarea" type="text" name="subject" #subject="ngModel" 
-            class="form-control"
-             [(ngModel)]="alert.subject" 
-                required
-             ></textarea>
-
-        </p>
-            <input type="submit" value="Save">
-    </form>
-    </div>
-        </div>
-        <div class="modal-footer">                    
-            <button type="button" class="btn btn-outline-dark" (click)="closeModal()">Cerrar</button>                               
-        </div>
     </ng-template>
-
 </div>
 </div>
 <div class="col-6">
@@ -72,19 +17,18 @@
 </div>
 <br>
     <div class="container">
-
         <div class="row">        
             <div class="col-1">
             </div>
             <div class="col-10">    
                 <div class="d-flex justify-content-between">                        
-                            <span class="colday_head">Sunday</span>                        
-                            <span class="colday_head">Monday</span>                        
-                            <span class="colday_head">Tuesday</span>                        
-                            <span class="colday_head">Wednesday</span>                        
-                            <span class="colday_head">Thursday</span>                       
-                            <span class="colday_head">Friday</span>                        
-                            <span class="colday_head">Saturday</span>                      
+                    <span class="colday_head">Sunday</span>                        
+                    <span class="colday_head">Monday</span>                        
+                    <span class="colday_head">Tuesday</span>                        
+                    <span class="colday_head">Wednesday</span>                        
+                    <span class="colday_head">Thursday</span>                       
+                    <span class="colday_head">Friday</span>                        
+                    <span class="colday_head">Saturday</span>                      
                 </div>
             </div>
             <div class="col-1">

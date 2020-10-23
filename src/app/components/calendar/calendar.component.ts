@@ -37,17 +37,14 @@ export class CalendarComponent implements OnInit {
   n = 7;
 
   
-    constructor(
-      private modal: NgbModal    
-      ) {
+  constructor(private modal: NgbModal) {
         this.alert = new Alert(0,'','','','');
-        this.show= true; }
+        this.show= true; 
+  }
 
   ngOnInit(): void {
-
-        this.obtenerfecha();
-              
-      }
+    this.obtenerfecha();              
+  }
 
       onSubmit(){
         console.log(this.alert);
