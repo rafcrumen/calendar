@@ -6,39 +6,33 @@
       </button>
     </div>
     <div class="modal-body">
-      <form>
+      <form  [formGroup]="form">
         <div class="form-group">
             <p>
                 <label class= "lab" >city:
                     <!-- <span *ngIf="!city.valid && city.touched" class="label label-danger">Fill city</span> -->
                 </label>
-                
-                <input class="form-control" type="text" name="city"
-                
-                    required>
+                <input type="hidden" formControlName="id">
+                <input class="form-control" type="text" name="city" formControlName="city" required>
             </p>
             <span></span>
         <p>
             <label class= "lab">Day:
                 <!-- <span *ngIf="!day.valid && day.touched" class="label label-danger">Fill day</span> -->
             </label>
-            <input class="form-control" type="text" name="day"
-                required>
+            <input class="form-control" type="text" name="date" formControlName="date" required>
         </p>
         <p>
             <label class= "lab">Time:
                 <!-- <span *ngIf="!time.valid && time.touched" class="label label-danger">Fill Time</span> -->
             </label>
-            <input class="form-control" type="text" name="time"
-                required>
+            <input class="form-control" type="text" name="time" formControlName="time" required>
         </p>
         <p>
             <label class= "lab">Subject:
                 <!-- <span *ngIf="!subject.valid && subject.touched" class="label label-danger">Fill Subject</span> -->
             </label>
-            <textarea ng-model="myTextarea" type="text" name="subject"
-            class="form-control"
-                required
+            <textarea type="text" name="subject" formControlName="subject" class="form-control" required
              ></textarea>
     
         </p>
@@ -47,7 +41,7 @@
       </form>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="close('Save click')">Save</button>
+      <button type="button" class="btn btn-outline-dark" (click)="save()">Save</button>
     </div>
   <hr>
   
