@@ -1,1 +1,54 @@
-<p>event-reminder works!</p>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <button type="button" class="close" aria-label="Close" 
+        (click)="dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+            <p>
+                <label class= "lab" >city:
+                    <!-- <span *ngIf="!city.valid && city.touched" class="label label-danger">Fill city</span> -->
+                </label>
+                
+                <input class="form-control" type="text" name="city"
+                
+                    required>
+            </p>
+            <span></span>
+        <p>
+            <label class= "lab">Day:
+                <!-- <span *ngIf="!day.valid && day.touched" class="label label-danger">Fill day</span> -->
+            </label>
+            <input class="form-control" type="text" name="day"
+                required>
+        </p>
+        <p>
+            <label class= "lab">Time:
+                <!-- <span *ngIf="!time.valid && time.touched" class="label label-danger">Fill Time</span> -->
+            </label>
+            <input class="form-control" type="text" name="time"
+                required>
+        </p>
+        <p>
+            <label class= "lab">Subject:
+                <!-- <span *ngIf="!subject.valid && subject.touched" class="label label-danger">Fill Subject</span> -->
+            </label>
+            <textarea ng-model="myTextarea" type="text" name="subject"
+            class="form-control"
+                required
+             ></textarea>
+    
+        </p>
+    
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="close('Save click')">Save</button>
+    </div>
+  <hr>
+  
+  <pre>{{ closeResult }}</pre>

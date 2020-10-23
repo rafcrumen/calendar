@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Reminder } from 'src/app/Model/reminder-model';
 
 @Component({
@@ -8,14 +8,18 @@ import { Reminder } from 'src/app/Model/reminder-model';
 })
 export class DayCalendarComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
   @Input() date: Date;
   @Input() reminders: Array<Reminder>;
-
+  @Output() onAddReminder: EventEmitter<Date>;
+  constructor() { 
+    this.onAddReminder = new EventEmitter<Date>();
+  }
   ngOnInit(): void {
   }
   ngAfterViewInit(){
-    console.log(this.date);
+  }
+  addReminder() {
+    this.onAddReminder.emit(this.date);
   }
 
 }

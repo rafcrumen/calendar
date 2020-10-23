@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { Reminder, ReminderImpl } from 'src/app/Model/reminder-model';
 
 @Component({
   selector: 'app-month-calendar',
@@ -7,16 +9,43 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MonthCalendarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService: NgbModal) { }
   weeks: Array<Array<Date>>;
   currentDate = new Date();
+  currentReminder: Reminder;
   months = [0,1,2,3,4,5,6,7,8,9,10,11];
   monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
-  
+  closeResult = '';  
   ngOnInit(): void {
     this.currentDate = new Date();
     this.fillWeeks();
   } 
+  addReminder(date2Set, content){
+    this.currentReminder = new ReminderImpl(date2Set, '00:00', '', '#ffffff', 'N');
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+    
+  }  
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+  open(content) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
   fillWeeks() {
     let currentMonth = this.currentDate.getMonth();
     let calendarDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
