@@ -11,6 +11,7 @@ export class MonthCalendarComponent implements OnInit {
 
   constructor(private modalService: NgbModal) { }
   weeks: Array<Array<Date>>;
+  reminders: Array<Reminder>;
   currentDate = new Date();
   currentReminder: Reminder;
   months = [0,1,2,3,4,5,6,7,8,9,10,11];
@@ -18,16 +19,26 @@ export class MonthCalendarComponent implements OnInit {
   closeResult = '';  
   ngOnInit(): void {
     this.currentDate = new Date();
+    this.reminders = new Array<Reminder>();
     this.fillWeeks();
   } 
   addReminder(date2Set, content){
-    this.currentReminder = new ReminderImpl(date2Set, '00:00', '', '#ffffff', 'N');
+    this.currentReminder = new ReminderImpl(null, date2Set, '00:00', '', '', '#ffffff', 'N');
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.close(result);
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
+      this.close(reason);
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
     
+  }
+  close(data: Reminder): void {
+    console.log("on Close: ", data);
+    if (data){
+      this.reminders.push(data);
+    }
+    this.modalService.dismissAll();
   }  
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -37,13 +48,6 @@ export class MonthCalendarComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
-  }
-  open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
   }
 
   fillWeeks() {

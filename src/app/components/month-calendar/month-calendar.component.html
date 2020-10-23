@@ -1,10 +1,11 @@
 <ng-template #content let-modal>
-    <app-event-reminder reminder="currentReminder"></app-event-reminder>  
+    <app-event-reminder (onClose)="close($event)" reminder="currentReminder"></app-event-reminder>  
 </ng-template>
 
 <div class="container">
     <div class="row">        
         <div class="col-1">
+            <button (click)="cambiaFecha(-1)" class="btn btn-success"> - </button>
         </div>
         <div class="col-10">    
             <div class="d-flex justify-content-between">
@@ -12,6 +13,7 @@
             </div>
         </div>
         <div class="col-1">
+            <button  (click)="cambiaFecha(1)" class="btn btn-success"> + </button>
         </div>
     </div>
     <div class="row">        
@@ -34,7 +36,6 @@
     <div class="row">
     <div class="d-flex align-items-center">    
         <div class="col-1">                
-            <button (click)="cambiaFecha(-1)" class="btn btn-success"> - </button>
         </div>
         <div class="col-10">
             <div class="d-flex justify-content-start" *ngFor="let row of weeks">
@@ -45,7 +46,6 @@
             </div>
         </div>          
         <div class="col-1">
-            <button  (click)="cambiaFecha(1)" class="btn btn-success"> + </button>
         </div>
     </div>
     </div>
