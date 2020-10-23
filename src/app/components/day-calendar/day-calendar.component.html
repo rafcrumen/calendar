@@ -1,6 +1,3 @@
-<div [ngClass]="date.getDay() > 0 && date.getDay() < 6 ? 'colday' : 'colday-weekend'">
-    <button (click)="cambiaFecha(-1)" class="btn btn-primary"> 
-        +
-    </button>    
+<div  [ngClass]="date.getDay() > 0 && date.getDay() < 6 ? 'colday' : 'colday-weekend'" (click)="addReminder()" >
     {{ date.getDate() }}
 </div>
