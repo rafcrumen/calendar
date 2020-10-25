@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { DayCalendar, DayCalendarImpl } from 'src/app/Model/day-calendar.model';
 import { Reminder, ReminderImpl } from 'src/app/Model/reminder-model';
 
 @Component({
@@ -10,7 +11,7 @@ import { Reminder, ReminderImpl } from 'src/app/Model/reminder-model';
 export class MonthCalendarComponent implements OnInit {
 
   constructor(private modalService: NgbModal) { }
-  weeks: Array<Array<Date>>;
+  weeks: Array<Array<DayCalendar>>;
   reminders: Array<Reminder>;
   currentDate = new Date();
   currentReminder: Reminder;
@@ -30,8 +31,7 @@ export class MonthCalendarComponent implements OnInit {
     }, (reason) => {
       this.close(reason);
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
-    
+    });    
   }
   close(data: Reminder): void {
     console.log("on Close: ", data);
@@ -54,15 +54,15 @@ export class MonthCalendarComponent implements OnInit {
     let currentMonth = this.currentDate.getMonth();
     let calendarDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
     let nextMonth = currentMonth == 11 ? 0 : currentMonth + 1;
-    this.weeks= new Array<Array<Date>>();
+    this.weeks= new Array<Array<DayCalendar>>();
     while (calendarDay.getDay() > 0){
       calendarDay.setDate(calendarDay.getDate() -1);
     }
-    let daysOfWeek = new Array<Date>();
+    let daysOfWeek = new Array<DayCalendar>();
     while(calendarDay.getMonth() != nextMonth){
-      daysOfWeek = new Array<Date>();
+      daysOfWeek = new Array<DayCalendar>();
       for(let day = 0; day < 7; day++){
-        daysOfWeek.push(new Date(calendarDay));
+        daysOfWeek.push(new DayCalendarImpl(new Date(calendarDay), 0));
         calendarDay.setDate(calendarDay.getDate() + 1);
         }
     this.weeks.push(daysOfWeek);

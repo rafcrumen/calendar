@@ -1,6 +1,5 @@
 .container {
-    width: 1000px;
-    
+    width: 1000px;   
 }
 
 .formcontainer{
@@ -28,12 +27,92 @@
     margin-right: 0px;
     cursor: pointer;
 }
-
+.colday-selectable{
+    font-family: Arial;
+    width: 50px;
+    height: 20px;
+    background-color: white;
+    border-color: rgb(134, 134, 146);
+    border-style: solid;
+    border-width: .05rem;
+    color: darkblue;
+    padding-left: 8px;
+    margin-left: 0px;
+    margin-right: 0px;
+    cursor: pointer;
+}
+.colday-current{
+    font-family: Arial;
+    width: 120px;
+    height: 80px;
+    background-color: rgb(44, 197, 108);
+    border-color: rgb(134, 134, 146);
+    border-style: solid;
+    border-width: .05rem;
+    color: black;
+    padding-left: 8px;
+    margin-left: 0px;
+    margin-right: 0px;
+    cursor: pointer;
+}
+.colday-selectable-current{
+    font-family: Arial;
+    width: 50px;
+    height: 20px;
+    background-color: rgb(44, 197, 108);
+    border-color: rgb(134, 134, 146);
+    border-style: solid;
+    border-width: .05rem;
+    color: darkblue;
+    padding-left: 8px;
+    margin-left: 0px;
+    margin-right: 0px;
+    cursor: pointer;
+}
 .colday-weekend{
     font-family: Arial;
     width: 120px;
     height: 80px;
     background-color: rgb(246, 246, 246);
+    border-color: rgb(134, 134, 146);
+    border-style: solid;
+    border-width: .05rem;
+    color: darkblue;
+    padding-left: 8px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.colday-weekend-selectable{
+    font-family: Arial;
+    width: 50px;
+    height: 20px;
+    background-color: rgb(246, 246, 246);
+    border-color: rgb(134, 134, 146);
+    border-style: solid;
+    border-width: .05rem;
+    color: darkblue;
+    padding-left: 8px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.colday-weekend-current{
+    font-family: Arial;
+    width: 120px;
+    height: 80px;
+    background-color: rgb(44, 197, 108);
+    border-color: rgb(134, 134, 146);
+    border-style: solid;
+    border-width: .05rem;
+    color: darkblue;
+    padding-left: 8px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.colday-weekend-selectable-current{
+    font-family: Arial;
+    width: 50px;
+    height: 20px;
+    background-color: rgb(44, 197, 108);
     border-color: rgb(134, 134, 146);
     border-style: solid;
     border-width: .05rem;
@@ -53,6 +132,15 @@
     padding-top: 5px;
 }
 
+.colday_head-selectable{
+    width: 50px;
+    height: 20px;
+    background-color: rgb(93, 132, 224);
+    color: white;
+    font-family: Arial;
+    text-align: center;
+    padding-top: 5px;
+}
 
 .coldayf{
     font-family: Arial;

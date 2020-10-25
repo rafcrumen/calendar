@@ -1,0 +1,56 @@
+<form [formGroup]="form">
+    <div >
+        <div class="row"></div>        
+        <div class="row">        
+            <div class="col-1"></div>
+            <div class="col-2">
+                <button (click)="cambiaFecha(-1)" class="btn btn-default"> < </button>
+            </div>
+            <div class="col-3">    
+                <select formControlName="month">
+                    <option *ngFor="let x of monthNames">{{x}}</option>
+                </select>
+            </div>
+            <div class="col-3">    
+                <select  formControlName="year">
+                    <option *ngFor="let x of years">{{x}}</option>
+                </select>
+            </div>
+            <div class="col-2">
+                <button  (click)="cambiaFecha(1)" class="btn btn-default"> > </button>
+            </div>
+            <div class="col-1"></div>
+        </div>        
+        <div class="row">        
+            <div class="col-1">
+            </div>
+            <div class="col-10">    
+                <div class="d-flex justify-content-between">
+                    <span class="colday_head-selectable">Su</span>
+                    <span class="colday_head-selectable">Mo</span>
+                    <span class="colday_head-selectable">Tu</span>
+                    <span class="colday_head-selectable">We</span>
+                    <span class="colday_head-selectable">Th</span>                       
+                    <span class="colday_head-selectable">Fr</span>
+                    <span class="colday_head-selectable">Sa</span>                      
+                </div>
+            </div>
+            <div class="col-1">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-1">                
+            </div>
+            <div class="col-10">
+                <div class="d-flex justify-content-between" *ngFor="let row of weeks">
+                    <div *ngFor="let x of row">
+                        <app-day-calendar [dayCalendar]="x" (onSelectedDate)="selectedDay($event)">
+                        </app-day-calendar>    
+                    </div>
+                </div>
+            </div>          
+            <div class="col-1">
+            </div>
+        </div>
+    </div>
+</form>

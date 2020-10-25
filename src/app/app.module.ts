@@ -15,7 +15,8 @@ import { EventReminderComponent } from './components/event-reminder/event-remind
 import { AddReminderButtonComponent } from './components/add-reminder-button/add-reminder-button.component';
 import { MonthCalendarComponent } from './components/month-calendar/month-calendar.component';
 import { DayCalendarComponent } from './components/day-calendar/day-calendar.component';
-
+import { PickDayCalendarComponent } from './components/pick-day-calendar/pick-day-calendar.component';
+import { PickabelDayCalendarComponent } from './components/pickabel-day-calendar/pickabel-day-calendar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,8 @@ import { DayCalendarComponent } from './components/day-calendar/day-calendar.com
     AddReminderButtonComponent,
     MonthCalendarComponent,
     DayCalendarComponent,
+    PickDayCalendarComponent,
+    PickabelDayCalendarComponent
   ],
   imports: [
     BrowserModule,

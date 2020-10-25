@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { DayCalendar, DayCalendarImpl } from 'src/app/Model/day-calendar.model';
 import { Reminder } from 'src/app/Model/reminder-model';
 
 @Component({
@@ -8,18 +9,20 @@ import { Reminder } from 'src/app/Model/reminder-model';
 })
 export class DayCalendarComponent implements OnInit, AfterViewInit {
 
-  @Input() date: Date;
+  @Input() dayCalendar: DayCalendar;
   @Input() reminders: Array<Reminder>;
-  @Output() onAddReminder: EventEmitter<Date>;
+  @Output() onSelectedDate: EventEmitter<Date>;
   constructor() { 
-    this.onAddReminder = new EventEmitter<Date>();
+    this.onSelectedDate = new EventEmitter<Date>();
   }
   ngOnInit(): void {
   }
   ngAfterViewInit(){
+    // if (this.dayCalendar){
+    //   this.dayCalendar = new DayCalendarImpl(new Date() ,1);
+    // }
   }
   addReminder() {
-    this.onAddReminder.emit(this.date);
+    this.onSelectedDate.emit(this.dayCalendar.day);
   }
-
 }

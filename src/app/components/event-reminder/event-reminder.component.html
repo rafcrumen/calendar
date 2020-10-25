@@ -20,23 +20,25 @@
             <label class= "lab">Day:
                 <!-- <span *ngIf="!day.valid && day.touched" class="label label-danger">Fill day</span> -->
             </label>
-            <input class="form-control" type="text" name="date" formControlName="date" required>
-        </p>
+            <div class="input-group">
+                <!-- <input id="dateOfBirth" class="form-control"  name="dp" ngbDatepicker #dp="ngbDatepicker"> -->
+                <div class="input-group-append">
+                    <input class="form-control" type="text" placeholder="yyyy-mm-dd" name="date" formControlName="date" required >
+                    <button class="btn btn-outline-secondary calendar" (click)="pickaDay()" type="button"></button>
+                </div>
+            </div>
         <p>
+            <app-pick-day-calendar *ngIf="selectingDate" [currentDate]="reminder.date" (onSelectedDate)="selectedDate($event)"></app-pick-day-calendar>
+
             <label class= "lab">Time:
                 <!-- <span *ngIf="!time.valid && time.touched" class="label label-danger">Fill Time</span> -->
             </label>
             <input class="form-control" type="text" name="time" formControlName="time" required>
         </p>
-        <p>
             <label class= "lab">Subject:
                 <!-- <span *ngIf="!subject.valid && subject.touched" class="label label-danger">Fill Subject</span> -->
             </label>
-            <textarea type="text" name="subject" formControlName="subject" class="form-control" required
-             ></textarea>
-    
-        </p>
-    
+            <textarea type="text" name="subject" formControlName="subject" class="form-control" required></textarea>
         </div>
       </form>
     </div>
@@ -44,5 +46,3 @@
       <button type="button" class="btn btn-outline-dark" (click)="save()">Save</button>
     </div>
   <hr>
-  
-  <pre>{{ closeResult }}</pre>

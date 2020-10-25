@@ -1,5 +1,5 @@
 <ng-template #content let-modal>
-    <app-event-reminder (onClose)="close($event)" reminder="currentReminder"></app-event-reminder>  
+    <app-event-reminder (onClose)="close($event)" [reminder]="currentReminder"></app-event-reminder>  
 </ng-template>
 
 <div class="container">
@@ -40,7 +40,7 @@
         <div class="col-10">
             <div class="d-flex justify-content-start" *ngFor="let row of weeks">
                 <div *ngFor="let x of row">
-                    <app-day-calendar [date]="x" (onAddReminder)="addReminder($event, content)">
+                    <app-day-calendar [dayCalendar]="x" (onSelectedDate)="addReminder($event, content)">
                     </app-day-calendar>
                 </div>
             </div>
