@@ -1,5 +1,9 @@
 <div  [ngClass]="this.dayCalendar.cssClass" (click)="addReminder()" >
     {{ dayCalendar.day.getDate() }}
+    {{reminders}}
+    <div *ngFor="let r of reminders">
+        {{r.date}}-{{r.time}}
+        </div>  
 </div>
 <!-- <div  [ngClass]="date.getDay() > 0 && date.getDay() < 6 ? 'colday' : 'colday-weekend'" (click)="addReminder()" >
     {{ date.getDate() }}

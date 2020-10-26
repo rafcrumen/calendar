@@ -23,7 +23,7 @@ export class EventReminderComponent implements OnInit, AfterViewInit {
   });
   closeResult = '';
   selectingDate = false;
-  constructor(private modal: NgbModal,private modalService: NgbModal, private cdr: ChangeDetectorRef) {
+  constructor(private modalService: NgbModal, private cdr: ChangeDetectorRef) {
     this.onClose = new EventEmitter<Reminder>();
   }
 
@@ -55,10 +55,10 @@ export class EventReminderComponent implements OnInit, AfterViewInit {
     this.form.controls.color.patchValue(this.reminder.color);
     this.form.controls.status.patchValue(this.reminder.status);
   }
-
-  save() {
-    console.log(this.form.value);
-    this.onClose.emit(this.form.value);
+  
+  save() {  
+    this.modalService.dismissAll(this.form.value);
+    //this.onClose.emit(this.form.value);
   }
   close(reason){
     this.onClose.emit(null);
@@ -78,7 +78,7 @@ export class EventReminderComponent implements OnInit, AfterViewInit {
   }  
   selectedDate(dateSelected){
     this.reminder.date = dateSelected;
-    this.patchFrom();
+    this.form.controls.date.patchValue(`${this.reminder.date.getFullYear()}/${this.reminder.date.getMonth()+1}/${this.reminder.date.getDate()}`);
     this.selectingDate = false;
   }
 }

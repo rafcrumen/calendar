@@ -27,9 +27,9 @@ export class PickDayCalendarComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.fillWeeks();
     this.fillYears();
-    this.patchForm();
   }
   ngAfterViewInit(){
+    this.patchForm();
   }
   close(reason){
   }  
@@ -65,10 +65,13 @@ export class PickDayCalendarComponent implements OnInit, AfterViewInit {
     while(calendarDay.getMonth() != nextMonth){
       daysOfWeek = new Array<DayCalendar>();
       for(let day = 0; day < 7; day++){
-        if (this.currentDate == calendarDay){
-          console.log(this.currentDate, calendarDay);
-        }
-        daysOfWeek.push(new DayCalendarImpl(new Date(calendarDay), this.currentDate == calendarDay ? 1 : 3));
+        if (this.currentDate.getDate() == calendarDay.getDate() &&
+            this.currentDate.getMonth() == calendarDay.getMonth() &&
+            this.currentDate.getFullYear() == calendarDay.getFullYear()){
+              daysOfWeek.push(new DayCalendarImpl(new Date(calendarDay), 3));
+            } else {
+              daysOfWeek.push(new DayCalendarImpl(new Date(calendarDay), 1));
+            }
         calendarDay.setDate(calendarDay.getDate() + 1);
         }
     this.weeks.push(daysOfWeek);

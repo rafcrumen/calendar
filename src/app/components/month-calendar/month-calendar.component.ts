@@ -10,7 +10,9 @@ import { Reminder, ReminderImpl } from 'src/app/Model/reminder-model';
 })
 export class MonthCalendarComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) { }
+  constructor(private modalService: NgbModal) { 
+    this.reminders = new Array<Reminder>();
+  }
   weeks: Array<Array<DayCalendar>>;
   reminders: Array<Reminder>;
   currentDate = new Date();
@@ -23,12 +25,28 @@ export class MonthCalendarComponent implements OnInit {
     this.reminders = new Array<Reminder>();
     this.fillWeeks();
   } 
+  remindersOfDate (date){
+    //console.log(date);
+    let dayReminders = new Array<Reminder>();
+    //this.reminders.forEach( )
+    for(let r of this.reminders){
+      if (r.date == date.day){
+          dayReminders.push(r);
+        }
+    }    
+    if (dayReminders.length > 0){
+      console.log(dayReminders);
+    }
+    return dayReminders;
+  }
   addReminder(date2Set, content){
     this.currentReminder = new ReminderImpl(null, date2Set, '00:00', '', '', '#ffffff', 'N');
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      //console.log("++++", result);
       this.close(result);
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
+      //console.log("reason", reason);
       this.close(reason);
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });    
@@ -37,6 +55,7 @@ export class MonthCalendarComponent implements OnInit {
     console.log("on Close: ", data);
     if (data){
       this.reminders.push(data);
+      console.log(this.reminders);
     }
     this.modalService.dismissAll();
   }  
@@ -62,7 +81,13 @@ export class MonthCalendarComponent implements OnInit {
     while(calendarDay.getMonth() != nextMonth){
       daysOfWeek = new Array<DayCalendar>();
       for(let day = 0; day < 7; day++){
-        daysOfWeek.push(new DayCalendarImpl(new Date(calendarDay), 0));
+        if (this.currentDate.getDate() == calendarDay.getDate() &&
+            this.currentDate.getMonth() == calendarDay.getMonth() &&
+            this.currentDate.getFullYear() == calendarDay.getFullYear()){
+            daysOfWeek.push(new DayCalendarImpl(new Date(calendarDay), 2));
+            } else {
+            daysOfWeek.push(new DayCalendarImpl(new Date(calendarDay), 0));
+        }
         calendarDay.setDate(calendarDay.getDate() + 1);
         }
     this.weeks.push(daysOfWeek);

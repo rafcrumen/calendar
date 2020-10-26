@@ -1,9 +1,9 @@
 .container {
-    width: 1000px;   
+    width: 50%;   
 }
 
 .formcontainer{
-    width:600px;
+    width:30%;
 }
 .lab{
     width:60px;
@@ -45,7 +45,7 @@
     font-family: Arial;
     width: 120px;
     height: 80px;
-    background-color: rgb(44, 197, 108);
+    background-color: gainsboro;
     border-color: rgb(134, 134, 146);
     border-style: solid;
     border-width: .05rem;
@@ -99,7 +99,7 @@
     font-family: Arial;
     width: 120px;
     height: 80px;
-    background-color: rgb(44, 197, 108);
+    background-color: gainsboro;
     border-color: rgb(134, 134, 146);
     border-style: solid;
     border-width: .05rem;
