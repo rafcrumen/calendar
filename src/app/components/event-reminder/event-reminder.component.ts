@@ -40,7 +40,7 @@ export class EventReminderComponent implements OnInit, AfterViewInit {
   initForm(): void {
     if (!this.reminder){
       let dateToday = new Date();
-      this.reminder = new ReminderImpl(new uuidv4(), 
+      this.reminder = new ReminderImpl(null, 
                                        new Date(dateToday.getFullYear(), dateToday.getMonth(), dateToday.getDate()),
                                         '','','','','N');      
     }
@@ -56,16 +56,17 @@ export class EventReminderComponent implements OnInit, AfterViewInit {
     this.form.controls.status.patchValue(this.reminder.status);
   }
   
-  save() {  
+  save() { 
+    this.form.controls.date.patchValue(new Date(this.form.controls.date.value)); 
+    console.log(this.form.controls.date);
     this.modalService.dismissAll(this.form.value);
-    //this.onClose.emit(this.form.value);
   }
   close(reason){
-    this.onClose.emit(null);
+    this.modalService.dismissAll(null);
   }  
   dismiss(message)
   {
-    this.onClose.emit(null);
+    this.modalService.dismissAll(null);
   }
   pickaDay(): void {
     this.selectingDate= true;
@@ -77,6 +78,7 @@ export class EventReminderComponent implements OnInit, AfterViewInit {
     // });
   }  
   selectedDate(dateSelected){
+    console.log(dateSelected);
     this.reminder.date = dateSelected;
     this.form.controls.date.patchValue(`${this.reminder.date.getFullYear()}/${this.reminder.date.getMonth()+1}/${this.reminder.date.getDate()}`);
     this.selectingDate = false;

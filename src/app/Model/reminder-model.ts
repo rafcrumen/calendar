@@ -1,5 +1,6 @@
 import { Time } from '@angular/common';
 import { ThrowStmt } from '@angular/compiler';
+import { Guid } from "guid-typescript";
 
 export interface Reminder {
 id: string;
@@ -13,7 +14,11 @@ status: string;
 
 export class ReminderImpl implements Reminder {
     constructor(public id, public date, public time, public subject,  public city, public color, public status){
-        this.id = id;
+        if (!id){
+            this.id = Guid.create();
+        } else {
+            this.id = id;
+        }
         this.date = date;
         this.subject = subject;
         this.time = time;

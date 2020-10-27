@@ -20,55 +20,60 @@ export class MonthCalendarComponent implements OnInit {
   months = [0,1,2,3,4,5,6,7,8,9,10,11];
   monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
   closeResult = '';  
+  
   ngOnInit(): void {
     this.currentDate = new Date();
     this.reminders = new Array<Reminder>();
     this.fillWeeks();
   } 
-  remindersOfDate (date){
+
+  remindersOfDate (date: Date): Reminder[]{
     //console.log(date);
     let dayReminders = new Array<Reminder>();
     //this.reminders.forEach( )
     for(let r of this.reminders){
-      if (r.date == date.day){
-          dayReminders.push(r);
+      if (r.date && 
+          r.date.getDate() === date.getDate() &&
+          r.date.getMonth() === date.getMonth() &&
+          r.date.getFullYear() === date.getFullYear() ){
+        dayReminders.push(r);
         }
     }    
-    if (dayReminders.length > 0){
-      console.log(dayReminders);
-    }
+    // if (dayReminders.length > 0){
+    //   console.log(dayReminders);
+    // }
     return dayReminders;
   }
   addReminder(date2Set, content){
     this.currentReminder = new ReminderImpl(null, date2Set, '00:00', '', '', '#ffffff', 'N');
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      //console.log("++++", result);
-      this.close(result);
-      this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
-      //console.log("reason", reason);
       this.close(reason);
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });    
   }
-  close(data: Reminder): void {
-    console.log("on Close: ", data);
-    if (data){
-      this.reminders.push(data);
-      console.log(this.reminders);
-    }
-    this.modalService.dismissAll();
-  }  
-  private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
-      return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      return 'by clicking on a backdrop';
-    } else {
-      return `with: ${reason}`;
-    }
-  }
+  editReminder(reminder, content){
+    this.currentReminder = reminder;
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    }, (reason) => {
+      this.close(reason);
+    });    
 
+  }
+  close(data: Reminder): void {
+    if (data){
+        let reminder = this.reminders.filter(r => r.id == data.id);
+        if (reminder.length > 0) {
+          this.reminders.map((reminder, index) => {
+            if (reminder.id == data .id){
+               this.reminders[index] = data;
+             }
+            });    
+            } else {
+            this.reminders.push(data);
+          }
+          this.modalService.dismissAll();
+    }  
+  }
   fillWeeks() {
     let currentMonth = this.currentDate.getMonth();
     let calendarDay = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
