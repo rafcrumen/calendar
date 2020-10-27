@@ -28,9 +28,7 @@ export class MonthCalendarComponent implements OnInit {
   } 
 
   remindersOfDate (date: Date): Reminder[]{
-    //console.log(date);
     let dayReminders = new Array<Reminder>();
-    //this.reminders.forEach( )
     for(let r of this.reminders){
       if (r.date && 
           r.date.getDate() === date.getDate() &&
@@ -39,10 +37,16 @@ export class MonthCalendarComponent implements OnInit {
         dayReminders.push(r);
         }
     }    
-    // if (dayReminders.length > 0){
-    //   console.log(dayReminders);
-    // }
-    return dayReminders;
+    dayReminders = dayReminders.sort((e1, e2) => {
+        if (e1.time < e2.time){
+          return -1;
+        } 
+        if (e2.time < e1.time){
+          return 1;
+        } 
+        return 0;
+    });
+    return dayReminders;    return dayReminders;
   }
   addReminder(date2Set, content){
     this.currentReminder = new ReminderImpl(null, date2Set, '00:00', '', '', '#ffffff', 'N');

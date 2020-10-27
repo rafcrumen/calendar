@@ -1,13 +1,10 @@
 <div  [ngClass]="this.dayCalendar.cssClass">
     <button type="button" class="btn btn-default btn-sm" (click)="addReminder()">
         {{ dayCalendar.day.getDate() }}
-    </button>    
+    </button>        
     <div *ngFor="let r of reminders">
-        <button type="button" class="btn btn-default btn-sm" (click)="editReminder(r)">
+        <button type="button" class="btn btn-default btn-sm" [ngStyle]="{'background-color':r.color}" (click)="editReminder(r)">
             {{r.subject}}-{{r.time}}
         </button>
     </div>  
 </div>
-<!-- <div  [ngClass]="date.getDay() > 0 && date.getDay() < 6 ? 'colday' : 'colday-weekend'" (click)="addReminder()" >
-    {{ date.getDate() }}
-</div> -->
