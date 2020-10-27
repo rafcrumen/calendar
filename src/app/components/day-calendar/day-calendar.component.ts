@@ -12,8 +12,10 @@ export class DayCalendarComponent implements OnInit, AfterViewInit {
   @Input() dayCalendar: DayCalendar;
   @Input() reminders: Array<Reminder>;
   @Output() onSelectedDate: EventEmitter<Date>;
+  @Output() onSelectedReminder: EventEmitter<Reminder>;
   constructor() { 
     this.onSelectedDate = new EventEmitter<Date>();
+    this.onSelectedReminder = new EventEmitter<Reminder>();
   }
   ngOnInit(): void {
   }
@@ -24,5 +26,8 @@ export class DayCalendarComponent implements OnInit, AfterViewInit {
   }
   addReminder() {
     this.onSelectedDate.emit(this.dayCalendar.day);
+  }
+  editReminder(reminder){
+    this.onSelectedReminder.emit(reminder);
   }
 }

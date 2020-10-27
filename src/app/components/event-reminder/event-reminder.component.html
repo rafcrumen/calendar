@@ -33,12 +33,12 @@
             <label class= "lab">Time:
                 <!-- <span *ngIf="!time.valid && time.touched" class="label label-danger">Fill Time</span> -->
             </label>
-            <input class="form-control" type="text" name="time" formControlName="time" required>
+            <input class="form-control" type="time" name="time" formControlName="time" required>
         </p>
             <label class= "lab">Subject:
                 <!-- <span *ngIf="!subject.valid && subject.touched" class="label label-danger">Fill Subject</span> -->
             </label>
-            <textarea type="text" name="subject" formControlName="subject" class="form-control" required></textarea>
+            <textarea type="text" maxlength="30" name="subject" formControlName="subject" class="form-control" required></textarea>
         </div>
       </form>
     </div>

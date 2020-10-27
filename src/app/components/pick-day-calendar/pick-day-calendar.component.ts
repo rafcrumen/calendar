@@ -49,6 +49,7 @@ export class PickDayCalendarComponent implements OnInit, AfterViewInit {
   }
 
   fillWeeks() {
+    this.currentDate = new Date(this.currentDate);
     if (!this.currentDate){
       let dateToday = new Date();
       this.currentDate = new Date(dateToday.getFullYear(), dateToday.getMonth(), dateToday.getDate());
