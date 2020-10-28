@@ -1,10 +1,17 @@
 <div  [ngClass]="this.dayCalendar.cssClass">
-    <button type="button" class="btn btn-default btn-sm" (click)="addReminder()">
-        {{ dayCalendar.day.getDate() }}
-    </button>        
-    <div *ngFor="let r of reminders">
-        <button type="button" class="btn btn-default btn-sm" [ngStyle]="{'background-color':r.color}" (click)="editReminder(r)">
-            {{r.subject}}-{{r.time}}
+    <div class="d-flex justify-content-start">
+        <button type="button" class="btn btn-default btn-sm" (click)="addReminder()">
+            {{ dayCalendar.day.getDate() }}
         </button>
-    </div>  
+    </div>
+    <!-- <div *ngIf="reminders.length>0" class="d-flex justify-content-start"> -->
+    <div *ngIf="reminders.length>0" class="input-group mb-3">
+        <button *ngIf="reminders.length>0"  type="button" class="btn btn-default btn-sm event-calendar" [ngStyle]="{'background-color':reminders[currentIndex].color}" (click)="editReminder(reminders[currentIndex])">
+            {{reminders[currentIndex].subject}} {{reminders[currentIndex].time}}
+        </button>
+        <div  class="input-group-append btn-event-calender-container">            
+            <button  *ngIf="reminders.length>1" (click)="nextIndex()" class="btn-event-calender"><</button>
+            <button *ngIf="reminders.length>1" (click)="previousIndex()" class="btn-event-calender">></button>            
+        </div>
+    </div>
 </div>

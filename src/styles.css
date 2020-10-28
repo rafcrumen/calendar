@@ -1,5 +1,5 @@
 .container {
-    width: 50%;   
+    width: 70%;   
 }
 
 .formcontainer{
@@ -12,7 +12,22 @@
 .inputsx {
     width:300px;
 }
-
+.colday_head{
+    font-family: Arial;
+    width: 120px;
+    height: 25px;
+    background-color: rgb(93, 132, 224);
+    border-color: rgb(134, 134, 146);
+    border-style: solid;
+    border-width: .05rem;
+    color: white;
+    text-align: center;
+    padding-left: 8px;
+    margin-left: 0px;
+    margin-right: 0px;
+    cursor: pointer;
+    vertical-align: middle;    
+}
 .colday{
     font-family: Arial;
     width: 120px;
@@ -26,6 +41,7 @@
     margin-left: 0px;
     margin-right: 0px;
     cursor: pointer;
+    vertical-align: middle;
 }
 .colday-selectable{
     font-family: Arial;
@@ -40,6 +56,7 @@
     margin-left: 0px;
     margin-right: 0px;
     cursor: pointer;
+    vertical-align: middle;
 }
 .colday-current{
     font-family: Arial;
@@ -54,6 +71,7 @@
     margin-left: 0px;
     margin-right: 0px;
     cursor: pointer;
+    vertical-align: middle;
 }
 .colday-selectable-current{
     font-family: Arial;
@@ -68,6 +86,7 @@
     margin-left: 0px;
     margin-right: 0px;
     cursor: pointer;
+    vertical-align: middle;
 }
 .colday-weekend{
     font-family: Arial;
@@ -81,6 +100,7 @@
     padding-left: 8px;
     margin-left: 0px;
     margin-right: 0px;
+    vertical-align: middle;
 }
 .colday-weekend-selectable{
     font-family: Arial;
@@ -94,6 +114,7 @@
     padding-left: 8px;
     margin-left: 0px;
     margin-right: 0px;
+    vertical-align: middle;
 }
 .colday-weekend-current{
     font-family: Arial;
@@ -107,6 +128,7 @@
     padding-left: 8px;
     margin-left: 0px;
     margin-right: 0px;
+    vertical-align: middle;
 }
 .colday-weekend-selectable-current{
     font-family: Arial;
@@ -120,17 +142,9 @@
     padding-left: 8px;
     margin-left: 0px;
     margin-right: 0px;
+    vertical-align: middle;
 }
 
-.colday_head{
-    width: 120px;
-    height: 25px;
-    background-color: rgb(93, 132, 224);
-    color: white;
-    font-family: Arial;
-    text-align: center;
-    padding-top: 5px;
-}
 
 .colday_head-selectable{
     width: 50px;
@@ -156,16 +170,27 @@
     margin-right: 0px;
 }
 
-.div .colday{
-    font-family: Arial;
-    width: 120px;
-    height: 80px;
-    background-color: rgb(246, 246, 246);
-    border-color: rgb(134, 134, 146);
-    border-style: solid;
-    border-width: .05rem;
-    color: darkblue;
-    padding-left: 8px;
-    margin-left: 0px;
-    margin-right: 0px;
-}/* You can add global styles to this file, and also import other style files */
+.weekend-number{
+    color: navy;
+    font-size: small;
+}
+.weekday-number{
+    color: navy;
+    font-size: larger;
+    font-weight: bold;
+}
+.event-calendar {
+    font-size: xx-small;
+    max-width: 89px;    
+}
+.event-calendar:hover{
+    font-size: x-large;
+}
+.btn-event-calender{
+    font-size: xx-small;
+}
+.btn-event-calender-container{
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+}

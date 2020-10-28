@@ -5,36 +5,30 @@
 <div class="container">
     <div class="row">        
         <div class="col-1">
-            <button (click)="cambiaFecha(-1)" class="btn btn-success"> - </button>
         </div>
-        <div class="col-10">    
-            <div class="d-flex justify-content-between">
-                <span class="head">{{monthNames[currentDate.getMonth()]}}/{{currentDate.getFullYear()}}</span>                
-            </div>
+        <div class="col-10 d-flex justify-content-start">
+                <button (click)="cambiaFecha(-1)" class="colday_head"> < </button>
+                <button  (click)="cambiaFecha(1)" class="colday_head"> > </button>
+                <span class="colday_head">{{monthNames[currentDate.getMonth()]}}/{{currentDate.getFullYear()}}</span>                
+                
         </div>
         <div class="col-1">
-            <button  (click)="cambiaFecha(1)" class="btn btn-success"> + </button>
         </div>
     </div>
     <div class="row">        
         <div class="col-1">
         </div>
-        <div class="col-10">    
-            <div class="d-flex justify-content-between">
-                <span class="colday_head">Sunday</span>
-                <span class="colday_head">Monday</span>
-                <span class="colday_head">Tuesday</span>
-                <span class="colday_head">Wednesday</span>
-                <span class="colday_head">Thursday</span>                       
-                <span class="colday_head">Friday</span>
-                <span class="colday_head">Saturday</span>                      
+        <div class="col-10 d-flex justify-content-start">    
+            <div *ngFor="let dow of weekDayNames">
+                <div class="colday_head"> 
+                    {{dow}}
+                </div>
             </div>
         </div>
         <div class="col-1">
         </div>
     </div>
     <div class="row">
-    <div class="d-flex align-items-center">    
         <div class="col-1">                
         </div>
         <div class="col-10">
@@ -49,6 +43,5 @@
         </div>          
         <div class="col-1">
         </div>
-    </div>
     </div>
 </div>

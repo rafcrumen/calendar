@@ -18,7 +18,8 @@ export class MonthCalendarComponent implements OnInit {
   currentDate = new Date();
   currentReminder: Reminder;
   months = [0,1,2,3,4,5,6,7,8,9,10,11];
-  monthNames = ["January", "February", "March", "April", "May", "June","July", "August", "September", "October", "November", "December"];
+  weekDayNames = ["Domingo", "Lúnes","Martes","Miércoles","Jueves","Viernes","Sábado"];
+  monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio","Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
   closeResult = '';  
   
   ngOnInit(): void {

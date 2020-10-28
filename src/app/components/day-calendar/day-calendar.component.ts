@@ -13,6 +13,7 @@ export class DayCalendarComponent  {
   @Input() reminders: Array<Reminder>;
   @Output() onSelectedDate: EventEmitter<Date>;
   @Output() onSelectedReminder: EventEmitter<Reminder>;
+  currentIndex = 0;
   constructor() { 
     this.onSelectedDate = new EventEmitter<Date>();
     this.onSelectedReminder = new EventEmitter<Reminder>();
@@ -22,5 +23,19 @@ export class DayCalendarComponent  {
   }
   editReminder(reminder){
     this.onSelectedReminder.emit(reminder);
+  }
+  nextIndex(){
+    if (this.reminders && this.reminders.length > this.currentIndex+1){
+        this.currentIndex++;
+    } else{
+      this.currentIndex = 0;
+    }
+  }
+  previousIndex(){
+    if (this.reminders && this.currentIndex > 0){
+        this.currentIndex--;
+    } else {
+      this.currentIndex = this.reminders.length-1;
+    }
   }
 }
