@@ -11,6 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 })
 export class EventReminderComponent implements OnInit, AfterViewInit {
   @Input() reminder: Reminder;
+  @Output() onClose: EventEmitter<Reminder>;
   public form  = new FormGroup({
     id: new FormControl(""),
     city: new FormControl(""),
@@ -23,6 +24,7 @@ export class EventReminderComponent implements OnInit, AfterViewInit {
   closeResult = '';
   selectingDate = false;
   constructor(private modalService: NgbModal, private cdr: ChangeDetectorRef) {
+    this.onClose = new EventEmitter<Reminder>();
   }
 
   ngOnInit(): void {
