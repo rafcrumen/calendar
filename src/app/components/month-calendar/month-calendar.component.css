@@ -1,0 +1,82 @@
+.container {
+    width: 1000px;
+    
+}
+
+.formcontainer{
+    width:600px;
+}
+.lab{
+    width:60px;
+}
+
+.inputsx {
+    width:300px;
+}
+
+.colday{
+    font-family: Arial;
+    width: 120px;
+    height: 80px;
+    background-color: white;
+    border-color: rgb(134, 134, 146);
+    border-style: solid;
+    border-width: .05rem;
+    color: darkblue;
+    padding-left: 8px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.colday-weekend{
+    font-family: Arial;
+    width: 120px;
+    height: 80px;
+    background-color: rgb(246, 246, 246);
+    border-color: rgb(134, 134, 146);
+    border-style: solid;
+    border-width: .05rem;
+    color: darkblue;
+    padding-left: 8px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.colday_head{
+    width: 120px;
+    height: 25px;
+    background-color: rgb(93, 132, 224);
+    color: white;
+    font-family: Arial;
+    text-align: center;
+    padding-top: 5px;
+}
+
+
+.coldayf{
+    font-family: Arial;
+    width: 120px;
+    height: 80px;
+    background-color: rgb(246, 246, 246);
+    border-color: rgb(134, 134, 146);
+    border-style: solid;
+    border-width: .05rem;
+    color: darkblue;
+    padding-left: 8px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.div .colday{
+    font-family: Arial;
+    width: 120px;
+    height: 80px;
+    background-color: rgb(246, 246, 246);
+    border-color: rgb(134, 134, 146);
+    border-style: solid;
+    border-width: .05rem;
+    color: darkblue;
+    padding-left: 8px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
