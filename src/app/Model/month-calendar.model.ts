@@ -1,3 +1,5 @@
+import { Reminder } from './reminder-model';
+
 export interface monthCalendar {
     reminders: Array<Reminder>;    
 }
